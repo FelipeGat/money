@@ -6,3 +6,55 @@
 .navbar-toggle {
   color: #fff;
 }
+
+.navbar-menu {
+  margin: 0;
+  padding: 5px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0px;
+  width: 210px;
+  z-index: 998;
+  background-color:  rgb(7, 182, 153);
+  list-style: none;
+}
+
+.navbar-usuario {
+  padding: 20px;
+  margin-bottom: 15px;
+  border-bottom: 5px solid #fff;;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.usuario-imagem {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+.usuario-nome {
+  display: block;
+}
+
+.navbar-menuitem {
+  padding: 20px;
+}
+
+.navbar-menuitem a {
+  color: #fff;
+}
+
+.navbar-menuitem a:hover {
+  font-weight: bold;
+  color: #000000;
+}
+

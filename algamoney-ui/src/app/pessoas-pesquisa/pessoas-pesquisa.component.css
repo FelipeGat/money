@@ -1,0 +1,14 @@
+.header-blue-background {
+  color: rgb(7, 182, 153);
+  padding: 10px;
+
+}
+
+.button-color {
+  background-color: rgb(7, 182, 153);;
+  color: white;
+}
+
+#status{
+  cursor: pointer;
+}

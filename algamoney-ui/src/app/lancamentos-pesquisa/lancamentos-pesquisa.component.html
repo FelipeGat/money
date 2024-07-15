@@ -30,7 +30,7 @@
 
   <div class="p-grid">
     <div class="p-col-12">
-      <p-table [value]="lancamentos" [paginator]="true" [rows]="15" [responsive]="true">
+      <p-table [value]="lancamentos" [paginator]="true" [rows]="10" [responsive]="true">
         <ng-template pTemplate="header">
           <tr>
             <th pSortableColumn="pessoa">Pessoa</th>
@@ -48,7 +48,12 @@
             <td>{{ lanc.dataVencimento }}</td>
             <td>{{ lanc.dataPagamento }}</td>
             <td>
-              <span [style.color]="lanc.tipo === 'DESPESA' ? 'red' : 'blue'">{{ lanc.valor }}</span>
+              <div class="valor-container">
+                <span class="valor-simbolo">R$</span>
+                <span class="valor-numero" [style.color]="lanc.tipo === 'DESPESA' ? 'red' : 'blue'">
+                  {{ lanc.valor | number:'1.2-2'}}
+                </span>
+              </div>
             </td>
             <td>
               <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" class="p-button button-color"></a>

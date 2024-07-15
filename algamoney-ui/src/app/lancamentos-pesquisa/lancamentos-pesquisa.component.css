@@ -8,3 +8,18 @@
   background-color: rgb(7, 182, 153);;
   color: white;
 }
+
+.valor-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.valor-simbolo {
+  margin-right: 4px;
+}
+
+.valor-numero {
+  text-align: right;
+  flex-grow: 1;
+}
