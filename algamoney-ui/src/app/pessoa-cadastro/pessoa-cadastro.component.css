@@ -16,9 +16,8 @@
   min-width: 100px;
 }
 
-.input-group-bairro {
-  margin-right: 10px;
-  min-width: 1000px;
+.uf-label {
+  margin-right: 100px;
 }
 
 .input-group input,

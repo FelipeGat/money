@@ -24,6 +24,7 @@
 
     <div class="p-col-12" style="display: flex; justify-content: end; align-items: center; margin: 0 0 20px">
       <button pButton type="submit" label="Pesquisar" class="p-button button-color"></button>
+      <button pButton type="button" label="Novo"></button>
     </div>
 
   </div>
@@ -38,6 +39,7 @@
             <th style="width: 140px;"pSortableColumn="dataVencimento">Vencimento</th>
             <th style="width: 140px;"pSortableColumn="dataPagamento">Pagamento</th>
             <th style="width: 130px;" pSortableColumn="valor">Valor</th>
+            <th style="width: 130px;" pSortableColumn="usuario">Usuario</th>
             <th style="width: 140px;">Ações</th>
           </tr>
         </ng-template>
@@ -55,6 +57,7 @@
                 </span>
               </div>
             </td>
+            <td>{{ lanc.usuario }}</td>
             <td>
               <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" class="p-button button-color"></a>
               <button pButton icon="pi pi-trash" pTooltip="Deletar" tooltipPosition="top"class="p-button button-color"></button>
