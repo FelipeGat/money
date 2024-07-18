@@ -24,8 +24,9 @@ import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.co
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -55,9 +56,12 @@ import { ToastModule } from 'primeng/toast';
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    ToastModule
+    ToastModule,
+    ConfirmDialogModule
+
+
   ],
-  providers: [LancamentoService, MessageService],
+  providers: [LancamentoService, MessageService, ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

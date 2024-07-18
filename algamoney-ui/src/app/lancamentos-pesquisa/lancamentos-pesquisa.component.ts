@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LancamentoFiltro, LancamentoService } from './lancamento.service';
-import { LazyLoadEvent, MessageService } from 'primeng/api';
+import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +15,7 @@ export class LancamentosPesquisaComponent implements OnInit {
   lancamentos = [];
   @ViewChild('tabela') grid;
 
-  constructor(private router: Router, private lancamentoService: LancamentoService, private messageService: MessageService) {}
+  constructor(private router: Router, private lancamentoService: LancamentoService, private messageService: MessageService, private confirmation: ConfirmationService) {}
 
   ngOnInit() {
   }
@@ -43,6 +43,16 @@ export class LancamentosPesquisaComponent implements OnInit {
     const pagina = event.first / event.rows;
     this.pesquisar(pagina);
   }
+
+  confirmarExclusao(lancamento:any){
+    this.confirmation.confirm({
+      message:'Tem certeza que deseja Excluir?',
+      accept:() =>{
+        this.excluir(lancamento);
+      }
+    });
+  }
+
   excluir(lancamento: any) {
     this.lancamentoService.excluir(lancamento.codigo)
       .then(() => {

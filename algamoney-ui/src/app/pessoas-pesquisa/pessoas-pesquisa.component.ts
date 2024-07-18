@@ -1,28 +1,32 @@
 import { Component } from '@angular/core';
 
 import { LazyLoadEvent } from 'primeng/api';
-import { PessoaFiltro, PessoaService, } from './pessoa.service';
-
+import { PessoaFiltro, PessoaService } from './pessoa.service';
 
 @Component({
   selector: 'app-pessoas-pesquisa',
   templateUrl: './pessoas-pesquisa.component.html',
-  styleUrls: ['./pessoas-pesquisa.component.css']
+  styleUrls: ['./pessoas-pesquisa.component.css'],
 })
 export class PessoasPesquisaComponent {
   totalRegistros = 0;
-  filtro = new PessoaFiltro()
+  filtro = new PessoaFiltro();
   pessoas: any[] = [];
 
-  constructor(private pessoaService: PessoaService) { }
+  constructor(private pessoaService: PessoaService) {}
 
   pesquisar(pagina: number = 0): void {
     this.filtro.pagina = pagina;
 
-    this.pessoaService.pesquisar(this.filtro)
+    this.pessoaService
+      .pesquisar(this.filtro)
       .then((dados: any) => {
+        console.log(dados);
         this.pessoas = dados.pessoas;
         this.totalRegistros = dados.total;
+      })
+      .catch((e) => {
+        console.log(e);
       });
   }
 

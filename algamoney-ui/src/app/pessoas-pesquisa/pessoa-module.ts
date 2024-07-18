@@ -9,14 +9,12 @@ import { TooltipModule } from 'primeng/tooltip';
 import { InputMaskModule } from 'primeng/Inputmask/inputmask';
 import { SharedModule } from 'primeng/api';
 import { PessoaCadastroComponent } from '../pessoa-cadastro/pessoa-cadastro.component';
-import { PessoasPesquisaComponent } from './pessoas-pesquisa.component';
 
 
 @NgModule({
   declarations: [
-    PessoaCadastroComponent,
-    PessoasPesquisaComponent
-  ],
+    PessoaCadastroComponent
+    ],
   imports: [
     CommonModule,
     FormsModule,
@@ -31,7 +29,6 @@ import { PessoasPesquisaComponent } from './pessoas-pesquisa.component';
   ],
   exports: [
     PessoaCadastroComponent,
-    PessoasPesquisaComponent
   ]
 })
 export class PessoasModule { }

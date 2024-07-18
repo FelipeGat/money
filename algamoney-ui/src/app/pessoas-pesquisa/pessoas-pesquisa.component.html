@@ -49,7 +49,10 @@
               <ng-template pTemplate="header">
                 <tr>
                   <th pSortableColumn="nome">Nome</th>
+                  <th pSortableColumn="logradouro">Logradouro</th>
+                  <th pSortableColumn="bairro">Bairro</th>
                   <th pSortableColumn="cidade">Cidade</th>
+                  <th pSortableColumn="numero">Numero</th>
                   <th style="width: 140px" pSortableColumn="estado">Estado</th>
                   <th style="width: 130px" pSortableColumn="ativo">Status</th>
                   <th style="width: 140px">Ações</th>
@@ -58,8 +61,11 @@
               <ng-template pTemplate="body" let-pessoa>
                 <tr>
                   <td>{{ pessoa.nome }}</td>
-                  <td>{{ pessoa.cidade }}</td>
-                  <td>{{ pessoa.estado }}</td>
+                  <td>{{ pessoa.endereco.logradouro }}</td>
+                  <td>{{ pessoa.endereco.bairro }}</td>
+                  <td>{{ pessoa.endereco.cidade }}</td>
+                  <td>{{ pessoa.endereco.numero }}</td>
+                  <td>{{ pessoa.endereco.estado }}</td>
                   <td>
                     <span
                       id="status"

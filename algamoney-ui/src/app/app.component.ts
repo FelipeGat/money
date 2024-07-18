@@ -11,10 +11,6 @@ import { Router, NavigationEnd } from '@angular/router';
 export class AppComponent implements OnInit {
   showNavbar = true;
 
-  // constructor(private toastyConfig: ToastyConfig, private router: Router) {
-  //   this.toastyConfig.theme = 'bootstrap';
-  // }
-
   constructor(private router: Router) {
   }
 
