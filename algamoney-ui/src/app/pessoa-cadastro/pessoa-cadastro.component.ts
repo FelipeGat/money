@@ -11,5 +11,8 @@ export class PessoaCadastroComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  cadastroPessoa(body) {
+    console.log(body);
+    // this.pessoaService.cadastrar()
+  }
 }

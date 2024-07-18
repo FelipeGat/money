@@ -11,7 +11,7 @@ export class PessoaFiltro {
   providedIn: 'root'
 })
 export class PessoaService {
-  pessoasUrl = 'http://localhost:8080/pessoas';
+  pessoasUrl = 'http://localhost:8080/pessoas';//rota do backend
 
   constructor(private http: HttpClient) { }
 
@@ -38,6 +38,19 @@ export class PessoaService {
         };
 
         return resultado;
+      });
+  }
+
+  cadastrar(body): Promise<any> {
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+
+    return this.http.post(`${this.pessoasUrl}`, { headers },body)
+      .toPromise()
+      .then((response: any) => {
+        const pessoas = response['content'];
+
+        return pessoas;
       });
   }
 

@@ -8,12 +8,9 @@ import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputMaskModule } from 'primeng/Inputmask/inputmask';
 import { SharedModule } from 'primeng/api';
-import { PessoaCadastroComponent } from '../pessoa-cadastro/pessoa-cadastro.component';
-
 
 @NgModule({
   declarations: [
-    PessoaCadastroComponent
     ],
   imports: [
     CommonModule,
@@ -28,7 +25,6 @@ import { PessoaCadastroComponent } from '../pessoa-cadastro/pessoa-cadastro.comp
     SharedModule
   ],
   exports: [
-    PessoaCadastroComponent,
   ]
 })
 export class PessoasModule { }

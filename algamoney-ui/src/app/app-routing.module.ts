@@ -4,6 +4,7 @@ import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.co
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { LoginComponent } from './login/login.component';
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
+import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 
 const routes: Routes = [
 
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'pessoas', component: PessoasPesquisaComponent },
   { path: 'lancamentos', component: LancamentosPesquisaComponent},
   { path: 'lancamentos-cadastro', component: LancamentoCadastroComponent},
+  { path: 'pessoa-cadastro', component: PessoaCadastroComponent},
 ];
 
 @NgModule({

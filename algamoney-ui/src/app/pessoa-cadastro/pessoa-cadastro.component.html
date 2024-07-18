@@ -1,5 +1,5 @@
 <div class="container">
-  <form>
+  <form #pessoaForm="ngForm">
     <div class="p-grid">
       <div class="p-col-12">
         <h1 class="header-blue-background">Nova Pessoa</h1>
@@ -73,7 +73,7 @@
         </div>
 
         <div class="ui-g12">
-          <button pButton type="submit" label="Salvar"></button>
+          <button pButton (click)="cadastroPessoa(pessoaForm)" type="submit" label="Salvar"></button>
           <button
             pButton
             type="button"
