@@ -23,3 +23,20 @@
   text-align: right;
   flex-grow: 1;
 }
+
+:host ::ng-deep .p-calendar
+    .p-datepicker table td.p-datepicker-today>span,
+:host ::ng-deep .p-calendar .p-datepicker
+    table td.p-datepicker-today>span:hover {
+      background-color: rgb(7, 182, 153);
+      color: white;
+    font-weight: bold;
+    border: none;
+}
+
+:host ::ng-deep .p-calendar .p-button{
+  background-color: rgb(7, 182, 153);
+  color: white;
+  font-weight: bold;
+  border: none;
+}

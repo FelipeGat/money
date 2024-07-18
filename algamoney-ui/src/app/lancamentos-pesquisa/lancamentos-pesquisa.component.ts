@@ -1,27 +1,39 @@
 import { Component, OnInit } from '@angular/core';
+import { LancamentoFiltro, LancamentoService } from './lancamento.service';
+import { LazyLoadEvent } from 'primeng/api';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
   templateUrl: './lancamentos-pesquisa.component.html',
   styleUrls: ['./lancamentos-pesquisa.component.css']
 })
-export class LancamentosPesquisaComponent {
+export class LancamentosPesquisaComponent implements OnInit {
 
-  lancamentos = [
-    { tipo: 'DESPESA', descricao: 'Compra de pão', dataVencimento: '30/06/2017',
-      dataPagamento: null, valor: 4.55, pessoa: 'Padaria do José', usuario: 'Felipe Gat' },
-    { tipo: 'RECEITA', descricao: 'Venda de software', dataVencimento: '10/06/2017',
-      dataPagamento: '09/06/2017', valor: 80000, pessoa: 'Atacado Brasil', usuario: 'Jucilene Siqueira' },
-    { tipo: 'DESPESA', descricao: 'Impostos', dataVencimento: '20/07/2017',
-      dataPagamento: null, valor: 14312, pessoa: 'Ministério da Fazenda', usuario: 'Felipe Gat' },
-    { tipo: 'DESPESA', descricao: 'Mensalidade de escola', dataVencimento: '05/06/2017',
-      dataPagamento: '30/05/2017', valor: 800, pessoa: 'Escola Abelha Rainha', usuario: 'Jucilene Siqueira' },
-    { tipo: 'RECEITA', descricao: 'Venda de carro', dataVencimento: '18/08/2017',
-      dataPagamento: null, valor: 55000, pessoa: 'Sebastião Souza', usuario: 'Felipe Gat' },
-    { tipo: 'DESPESA', descricao: 'Aluguel', dataVencimento: '10/07/2017',
-      dataPagamento: '09/07/2017', valor: 1750, pessoa: 'Casa Nova Imóveis', usuario: 'Felipe Gat' },
-    { tipo: 'DESPESA', descricao: 'Mensalidade musculação', dataVencimento: '13/07/2017',
-      dataPagamento: null, valor: 180, pessoa: 'Academia Top', usuario: 'Felipe Gat'}
-  ];
+  totalRegistros = 0;
+  filtro = new LancamentoFiltro();
+  lancamentos = [];
+
+  constructor(private lancamentoService: LancamentoService) {}
+
+  ngOnInit() {
+  }
+
+  pesquisar(pagina = 0) {
+    this.filtro.pagina = pagina;
+
+    this.lancamentoService.pesquisar(this.filtro).subscribe(
+      resultado => {
+        this.totalRegistros = resultado.total;
+        this.lancamentos = resultado.lancamentos;
+      },
+      error => {
+        console.error('Erro ao pesquisar lançamentos', error);
+      }
+    );
+  }
+  aoMudarPagina(event: LazyLoadEvent){
+    const pagina = event.first / event.rows;
+    this.pesquisar(pagina);
 
   }
+}
