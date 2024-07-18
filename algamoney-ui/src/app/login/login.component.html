@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="container-form">
+    <img src="assets/img/logo.jpg" alt="Logo da Empresa" class="logo">
+    <h2 id="titulo-login">Faça Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <input formControlName="username" type="text" placeholder="Usuário" required><br>
+      <input formControlName="password" type="password" placeholder="Senha" required><br><br>
+      <input type="checkbox" id="lembrar" formControlName="lembrar">
+      <label for="lembrar" class="texto-lembrar">Lembrar de mim</label><br><br>
+      <button type="submit">Login</button>
+    </form>
+
+    <p>É novo por aqui? <br>Faça seu Cadastro, <a routerLink="/cadastro" class="texto-cadastro">clique aqui!</a></p>
+  </div>
+</div>
+

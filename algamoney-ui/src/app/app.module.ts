@@ -21,6 +21,11 @@ import { MessageComponent } from './message/message.component';
 import { LancamentoService } from './lancamentos-pesquisa/lancamento.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
+import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,8 @@ import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.co
     LancamentoCadastroComponent,
     PessoaCadastroComponent,
     MessageComponent,
-    PessoasPesquisaComponent
+    PessoasPesquisaComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,9 +52,12 @@ import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.co
     DropdownModule,
     InputNumberModule,
     InputMaskModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    ToastModule
   ],
-  providers: [LancamentoService],
+  providers: [LancamentoService, MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

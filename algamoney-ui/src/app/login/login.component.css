@@ -1,0 +1,64 @@
+/* Adicione seu CSS personalizado aqui */
+.container-form {
+  max-width: 500px;
+  margin: auto;
+  padding: 30px;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  background-color: #07b699;
+  width: 100vw;
+  height: 100vh;
+}
+
+.logo {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+#titulo-login {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+button[type="submit"] {
+  padding: 12px 28px;
+  background-color: #07b699;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+button[type="submit"]:hover {
+  background-color: #033028;
+}
+
+.texto-lembrar, .texto-cadastro {
+  cursor: pointer;
+  color: #07b699;
+  font-size: 18px;
+}
+
+.texto-cadastro:hover {
+  text-decoration: underline;
+}
