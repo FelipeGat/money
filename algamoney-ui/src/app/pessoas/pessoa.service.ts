@@ -11,7 +11,7 @@ export class PessoaFiltro {
   providedIn: 'root'
 })
 export class PessoaService {
-  pessoasUrl = 'http://localhost:8080/pessoas';//rota do backend
+  pessoasUrl = 'http://localhost:8080/pessoas';
 
   constructor(private http: HttpClient) { }
 

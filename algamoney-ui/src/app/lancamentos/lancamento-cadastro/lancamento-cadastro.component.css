@@ -44,7 +44,7 @@
     border: none;
 }
 
-.despesa-selected .p-button {
+.button-despesa .ui-state-active {
   background-color: red !important;
-  color: white !important;
+  border-color: red !important;
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PessoaService } from '../pessoas-pesquisa/pessoa.service';
+import { PessoaService } from '../pessoa.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 

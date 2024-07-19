@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import * as moment from 'moment';
 
 export class LancamentoFiltro {
@@ -17,11 +15,11 @@ export class LancamentoFiltro {
 })
 export class LancamentoService {
 
-  private lancamentosUrl = 'http://localhost:8080/lancamento';
+  private lancamentosUrl = 'http://localhost:8080/lancamentos';
 
   constructor(private http: HttpClient) { }
 
-  pesquisar(filtro: LancamentoFiltro): Observable<any> {
+  pesquisar(filtro: LancamentoFiltro): Promise<{ lancamentos: any; total: any }> {
     let params = new HttpParams();
     const headers = new HttpHeaders({
       'Authorization': 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='
@@ -40,8 +38,9 @@ export class LancamentoService {
       params = params.set('dataVencimentoAte', moment(filtro.dataVencimentoFim).format('YYYY-MM-DD'));
     }
 
-    return this.http.get<any>(`${this.lancamentosUrl}?resumo`, { headers, params }).pipe(
-      map(response => {
+    return this.http.get<any>(`${this.lancamentosUrl}?resumo`, { headers, params })
+      .toPromise()
+      .then(response => {
         const lancamentos = response.content;
 
         const resultado = {
@@ -50,8 +49,7 @@ export class LancamentoService {
         };
 
         return resultado;
-      })
-    );
+      });
   }
 
   excluir(codigo: number): Promise<void> {
@@ -61,5 +59,14 @@ export class LancamentoService {
     return this.http.delete(`${this.lancamentosUrl}/${codigo}`, { headers })
       .toPromise()
       .then(() => null);
+  }
+
+  cadastrar(lancamento: any): Promise<any> {
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+
+    return this.http.post(`${this.lancamentosUrl}`, lancamento, { headers })
+      .toPromise()
+      .then(response => response);
   }
 }

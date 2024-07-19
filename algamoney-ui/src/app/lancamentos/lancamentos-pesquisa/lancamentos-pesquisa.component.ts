@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { LancamentoFiltro, LancamentoService } from './lancamento.service';
+import { LancamentoFiltro, LancamentoService } from '../lancamento.service';
 import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -15,28 +16,34 @@ export class LancamentosPesquisaComponent implements OnInit {
   lancamentos = [];
   @ViewChild('tabela') grid;
 
-  constructor(private router: Router, private lancamentoService: LancamentoService, private messageService: MessageService, private confirmation: ConfirmationService) {}
+  constructor(
+    private router: Router,
+    private lancamentoService: LancamentoService,
+    private messageService: MessageService,
+    private confirmation: ConfirmationService
+  ) {}
 
   ngOnInit() {
+    this.pesquisar(); // Carregar dados ao iniciar
   }
 
   pesquisar(pagina = 0) {
     this.filtro.pagina = pagina;
 
-    this.lancamentoService.pesquisar(this.filtro).subscribe(
+    from(this.lancamentoService.pesquisar(this.filtro)).subscribe(
       resultado => {
         this.totalRegistros = resultado.total;
         this.lancamentos = resultado.lancamentos;
       },
       error => {
-        this.messageService.add({ severity: 'info', summary: 'Erro', detail: 'Erro ao pesquisar lançamentos' });
+        this.messageService.add({ severity: 'error', summary: 'Erro', detail: 'Erro ao pesquisar lançamentos' });
         console.error('Erro ao pesquisar lançamentos', error);
       }
     );
   }
 
   mudarPagina() {
-    this.router.navigate(["/lancamentos-cadastro"])
+    this.router.navigate(["/lancamentos-cadastro"]);
   }
 
   aoMudarPagina(event: LazyLoadEvent) {
@@ -44,10 +51,10 @@ export class LancamentosPesquisaComponent implements OnInit {
     this.pesquisar(pagina);
   }
 
-  confirmarExclusao(lancamento:any){
+  confirmarExclusao(lancamento: any) {
     this.confirmation.confirm({
-      message:'Tem certeza que deseja Excluir?',
-      accept:() =>{
+      message: 'Tem certeza que deseja excluir?',
+      accept: () => {
         this.excluir(lancamento);
       }
     });
@@ -56,13 +63,14 @@ export class LancamentosPesquisaComponent implements OnInit {
   excluir(lancamento: any) {
     this.lancamentoService.excluir(lancamento.codigo)
       .then(() => {
-        if (this.grid.firt ===0){
-        this.pesquisar();
-      } else {
-        this.grid.first = 0;
-      }
+        if (this.grid.first === 0) {
+          this.pesquisar(); // Atualizar a lista se estiver na primeira página
+        } else {
+          this.grid.first = 0; // Resetar a posição da página
+        }
       })
       .catch(error => {
+        this.messageService.add({ severity: 'error', summary: 'Erro', detail: 'Erro ao excluir lançamento' });
         console.error('Erro ao excluir lançamento', error);
       });
   }

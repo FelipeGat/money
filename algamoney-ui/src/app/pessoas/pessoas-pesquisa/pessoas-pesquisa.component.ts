@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { LazyLoadEvent, MessageService } from 'primeng/api';
-import { PessoaFiltro, PessoaService } from './pessoa.service';
+import { PessoaFiltro, PessoaService } from '../pessoa.service';
 import { Router } from '@angular/router';
 
 @Component({
