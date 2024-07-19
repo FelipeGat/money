@@ -54,8 +54,12 @@ export class LancamentosPesquisaComponent implements OnInit {
   confirmarExclusao(lancamento: any) {
     this.confirmation.confirm({
       message: 'Tem certeza que deseja excluir?',
+      acceptLabel: 'Sim',
+      rejectLabel: 'Não',
+      defaultFocus: 'accept',
+
       accept: () => {
-        this.excluir(lancamento);
+      this.excluir(lancamento);
       }
     });
   }
@@ -64,9 +68,9 @@ export class LancamentosPesquisaComponent implements OnInit {
     this.lancamentoService.excluir(lancamento.codigo)
       .then(() => {
         if (this.grid.first === 0) {
-          this.pesquisar(); // Atualizar a lista se estiver na primeira página
+          this.pesquisar();
         } else {
-          this.grid.first = 0; // Resetar a posição da página
+          this.grid.first = 0;
         }
       })
       .catch(error => {

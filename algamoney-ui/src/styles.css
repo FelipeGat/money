@@ -95,3 +95,10 @@ a.p-button:hover,
 a.p-button:focus {
 text-decoration: none;
 }
+
+.ui-confirmdialog {
+  .ui-dialog-footer {
+    display: flex;
+    justify-content: center;
+  }
+}
