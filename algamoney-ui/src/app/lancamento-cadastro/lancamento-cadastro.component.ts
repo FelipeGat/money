@@ -1,3 +1,5 @@
+import { PessoaService } from '../pessoas-pesquisa/pessoa.service';
+import { CategoriaService } from './../categorias/categoria-service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -12,19 +14,32 @@ export class LancamentoCadastroComponent implements OnInit {
     {label: 'Despesa' , value: 'DESPESA'}
   ];
 
-  categorias = [
-    {label: 'Alimentação' , value: 1},
-    {label: 'Transporte' , value: 2}
-  ];
+  categorias = [];
+  pessoas = [];
 
-  pessoas = [
-    {label: 'Felipe Gat' , value: 1},
-    {label: 'Jucilene Siqueira' , value: 2}
-  ];
-
-  constructor() { }
+  constructor( private categoriaService: CategoriaService, private pessoaService: PessoaService) { }
 
   ngOnInit(): void {
+    this.carregarCategorias();
+    this.carregarPessoas();
+  }
+
+  carregarCategorias(){
+      return this.categoriaService.listarTodas()
+      .then(categorias => {
+        this.categorias = categorias.map(c => ({ label: c.nome, value: c.codigo}))
+        })
+      .catch(error => { console.error('Erro ao carregar Categorias', error);
+    })
+}
+
+    carregarPessoas(){
+      return this.pessoaService.listarTodas()
+      .then(pessoas => {
+        this.pessoas = pessoas.map(p => ({ label: p.nome, value: p.codigo}))
+        })
+      .catch(error => { console.error('Erro ao carregar Categorias', error);
+    })
   }
 
 }

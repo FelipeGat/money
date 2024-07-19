@@ -57,7 +57,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     AppRoutingModule,
     ReactiveFormsModule,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
 
 
   ],

@@ -25,7 +25,6 @@ public class Pessoa {
 	@Embedded
 	private Endereco endereco;
 
-	@NotNull
 	private Boolean ativo;
 
 	public Long getCodigo() {

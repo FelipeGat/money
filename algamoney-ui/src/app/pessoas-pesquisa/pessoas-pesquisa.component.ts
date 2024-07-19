@@ -25,10 +25,10 @@ export class PessoasPesquisaComponent {
         console.log(dados);
         this.pessoas = dados.pessoas;
         this.totalRegistros = dados.total;
-        this.messageService.add({severity:'success', summary:'Sucesso', detail: 'Foi o bagui', closable: false, life: 6000})
+
       })
       .catch((e) => {
-        console.log(e);
+        this.messageService.add({severity:'error', summary:'Aviso', detail: 'Não foi o bagui', closable: false, life: 6000});
       });
   }
 

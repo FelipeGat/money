@@ -1,5 +1,5 @@
 <div class="container">
-  <form>
+  <form #lancamentoForm="ngForm">
     <div class="p-grid">
       <div class="p-col-12">
         <h1 class="header-blue-background">Novo Lançamento</h1>
@@ -12,28 +12,28 @@
       <div class="p-col-6 p-md-3">
         <div class="input-group">
           <label>Vencimento:</label>
-          <p-calendar dateFormat="dd/mm/yy" showIcon="true"></p-calendar>
+          <p-calendar ngModel name="vencimento" #vencimento="ngModel" dateFormat="dd/mm/yy" showIcon="true"></p-calendar>
         </div>
       </div>
 
       <div class="p-col-6 p-md-3">
         <div class="input-group">
           <label>{{tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento'  }}:</label>
-          <p-calendar dateFormat="dd/mm/yy" showIcon="true"></p-calendar>
+          <p-calendar ngModel name="receita" #receita="ngModel" dateFormat="dd/mm/yy" showIcon="true"></p-calendar>
         </div>
       </div>
 
       <div class="p-col-12 p-md-8">
         <div class="input-group">
           <label>Descrição:</label>
-          <input pInputText type="text" />
+          <input ngModel name="descricao" #descricao="ngModel" pInputText type="text" [required]="true" minlength="3" maxlength="30"/>
         </div>
       </div>
 
       <div class="p-col-12 p-md-8">
         <div class="input-group">
           <label>Categoria:</label>
-          <p-dropdown [options]="categorias" placeholder="Selecione"></p-dropdown>
+          <p-dropdown ngModel name="categoria" #categoria="ngModel" [options]="categorias" placeholder="Selecione"></p-dropdown>
         </div>
       </div>
 
@@ -42,14 +42,14 @@
           <div class="p-col-6 p-md-3">
             <div class="input-group">
               <label>Valor:</label>
-              <p-inputNumber mode="currency" currency ='BRL' placeholder="0,00"></p-inputNumber>
+              <p-inputNumber ngModel name="valor" #valor="ngModel" mode="currency" currency ='BRL' placeholder="0,00"></p-inputNumber>
             </div>
           </div>
 
           <div class="p-col-6 p-md-3">
             <div class="input-group">
               <label>Pessoa:</label>
-              <p-dropdown [options]="pessoas"></p-dropdown>
+              <p-dropdown ngModel name="pessoa" #pessoa="ngModel" [options]="pessoas"></p-dropdown>
             </div>
           </div>
         </div>
@@ -58,18 +58,12 @@
       <div class="p-col-12 p-md-8">
         <div class="input-group">
           <label>Observação:</label>
-          <textarea pInputTextarea rows="3"></textarea>
+          <textarea ngModel name="observacao" #observacao="ngModel" pInputTextarea rows="3"></textarea>
         </div>
       </div>
     </div>
     <div class="ui-g12">
-      <button pButton type="submit" label="Salvar"></button>
-      <button
-        pButton
-        type="button"
-        label="Novo"
-        class="ui-button-green"
-      ></button>
+      <button class="ui-button-green" pButton type="submit" label="Salvar" [disabled]="!lancamentoForm.valid"></button>
     </div>
   </form>
 </div>

@@ -45,7 +45,7 @@ export class PessoaService {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
-    return this.http.post(`${this.pessoasUrl}`, { headers },body)
+    return this.http.post(`${this.pessoasUrl}`, body, { headers })
       .toPromise()
       .then((response: any) => {
         const pessoas = response['content'];
