@@ -47,11 +47,7 @@ export class PessoaService {
 
     return this.http.post(`${this.pessoasUrl}`, body, { headers })
       .toPromise()
-      .then((response: any) => {
-        const pessoas = response['content'];
-
-        return pessoas;
-      });
+      .then((response: any) => response['content']);
   }
 
   listarTodas(): Promise<any> {

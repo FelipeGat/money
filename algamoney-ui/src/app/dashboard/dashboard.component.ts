@@ -1,3 +1,5 @@
+import { PessoaService } from '../pessoas/pessoa.service';
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  pessoas = [];
+
   chartOptions = {
     responsive: true,
   };
@@ -13,12 +17,12 @@ export class DashboardComponent implements OnInit {
   chartType = 'bar';
 
   receitasPorPessoa = {
-    labels: ['Felipe Gat', 'Ju Siqueira'],
+    labels: [],
     datasets: [
       {
         label: 'Receitas',
-        data: [300, 500, 100],
-        backgroundColor: ['rgb(7, 182, 153)', 'pink',]
+        data: [],
+        backgroundColor: []
       }
     ]
   };
@@ -35,12 +39,12 @@ export class DashboardComponent implements OnInit {
   };
 
   despesasPorPessoa = {
-    labels: ['Felipe Gat', 'Ju Siqueira'],
+    labels: [],
     datasets: [
       {
         label: 'Despesas',
-        data: [200, 400, 600],
-        backgroundColor: ['rgb(7, 182, 153)', 'pink',]
+        data: [],
+        backgroundColor: []
       }
     ]
   };
@@ -62,13 +66,41 @@ export class DashboardComponent implements OnInit {
       {
         label: 'Despesas',
         data: [400, 300, 100],
-        backgroundColor: ['#FF6384', 'pink' ,'#36A2EB', '#FFCE56']
+        backgroundColor: ['#FF6384', 'pink', '#36A2EB', '#FFCE56']
       }
     ]
   };
 
-  constructor() { }
+  constructor(private pessoaService: PessoaService) { }
 
   ngOnInit(): void {
+    this.carregarPessoas();
+  }
+
+  carregarPessoas() {
+    this.pessoaService.listarTodas().then(pessoas => {
+      this.pessoas = pessoas;
+
+      // Atualiza os gráficos com as pessoas recuperadas
+      const nomes = pessoas.map(p => p.nome);
+      const receitas = pessoas.map(() => Math.floor(Math.random() * 1000)); // Gerar receitas aleatórias
+      const despesas = pessoas.map(() => Math.floor(Math.random() * 500)); // Gerar despesas aleatórias
+      const backgroundColors = pessoas.map(() => this.gerarCorAleatoria());
+
+      this.receitasPorPessoa.labels = nomes;
+      this.receitasPorPessoa.datasets[0].data = receitas;
+      this.receitasPorPessoa.datasets[0].backgroundColor = backgroundColors;
+
+      this.despesasPorPessoa.labels = nomes;
+      this.despesasPorPessoa.datasets[0].data = despesas;
+      this.despesasPorPessoa.datasets[0].backgroundColor = backgroundColors;
+    });
+  }
+
+  gerarCorAleatoria() {
+    const r = Math.floor(Math.random() * 255);
+    const g = Math.floor(Math.random() * 255);
+    const b = Math.floor(Math.random() * 255);
+    return `rgb(${r}, ${g}, ${b})`;
   }
 }

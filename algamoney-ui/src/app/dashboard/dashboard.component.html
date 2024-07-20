@@ -56,5 +56,23 @@
         [chartType]="chartType">
       </canvas>
     </div>
+
+    <div class="p-col-12">
+      <h2>Pessoas Cadastradas</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Endereço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pessoa of pessoas">
+            <td>{{ pessoa.nome }}</td>
+            <td>{{ pessoa.endereco.logradouro }}, {{ pessoa.endereco.numero }}, {{ pessoa.endereco.bairro }}, {{ pessoa.endereco.cidade }} - {{ pessoa.endereco.estado }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
