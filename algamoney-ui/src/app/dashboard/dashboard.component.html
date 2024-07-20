@@ -1,0 +1,60 @@
+<div class="container">
+  <h1 class="header-blue-background">Dashboard</h1>
+
+  <div class="p-grid">
+    <div class="p-col-6">
+      <h2>Receitas por Pessoa</h2>
+      <canvas baseChart
+        [datasets]="receitasPorPessoa.datasets"
+        [labels]="receitasPorPessoa.labels"
+        [options]="chartOptions"
+        [legend]="chartLegend"
+        [chartType]="chartType">
+      </canvas>
+    </div>
+
+    <div class="p-col-6">
+      <h2>Receitas por Mês</h2>
+      <canvas baseChart
+        [datasets]="receitasPorMes.datasets"
+        [labels]="receitasPorMes.labels"
+        [options]="chartOptions"
+        [legend]="chartLegend"
+        [chartType]="chartType">
+      </canvas>
+    </div>
+
+    <div class="p-col-6">
+      <h2>Despesas por Pessoa</h2>
+      <canvas baseChart
+        [datasets]="despesasPorPessoa.datasets"
+        [labels]="despesasPorPessoa.labels"
+        [options]="chartOptions"
+        [legend]="chartLegend"
+        [chartType]="chartType">
+      </canvas>
+    </div>
+
+    <div class="p-col-6">
+      <h2>Despesas por Mês</h2>
+      <canvas baseChart
+        [datasets]="despesasPorMes.datasets"
+        [labels]="despesasPorMes.labels"
+        [options]="chartOptions"
+        [legend]="chartLegend"
+        [chartType]="chartType">
+      </canvas>
+    </div>
+
+    <div class="p-col-12">
+      <h2>Despesas por Tipo</h2>
+      <canvas baseChart
+        [datasets]="despesasPorTipo.datasets"
+        [labels]="despesasPorTipo.labels"
+        [options]="chartOptions"
+        [legend]="chartLegend"
+        [chartType]="chartType">
+      </canvas>
+    </div>
+  </div>
+</div>

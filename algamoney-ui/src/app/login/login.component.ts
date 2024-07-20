@@ -20,7 +20,7 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      this.router.navigate(['/lancamentos']);
+      this.router.navigate(['/dashboard']);
     }
   }
 }

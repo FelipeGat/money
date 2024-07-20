@@ -5,6 +5,7 @@ import { LancamentosPesquisaComponent } from './lancamentos/lancamentos-pesquisa
 import { LoginComponent } from './login/login.component';
 import { LancamentoCadastroComponent } from './lancamentos/lancamento-cadastro/lancamento-cadastro.component';
 import { PessoaCadastroComponent } from './pessoas/pessoa-cadastro/pessoa-cadastro.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
 
@@ -13,6 +14,8 @@ const routes: Routes = [
   { path: 'lancamentos', component: LancamentosPesquisaComponent},
   { path: 'lancamentos-cadastro', component: LancamentoCadastroComponent},
   { path: 'pessoa-cadastro', component: PessoaCadastroComponent},
+  { path: 'dashboard', component: DashboardComponent },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
 
 @NgModule({
